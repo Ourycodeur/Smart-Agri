@@ -1,0 +1,5 @@
+# Frontend Streamlit
+streamlit
+requests
+pandas
+plotly

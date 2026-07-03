@@ -1,0 +1,9 @@
+# API
+fastapi
+uvicorn
+pydantic
+numpy
+pandas
+# Machine Learning
+scikit-learn
+joblib
