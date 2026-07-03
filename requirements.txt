@@ -1,0 +1,15 @@
+mlflow
+pandas 
+numpy
+scikit-learn
+fastapi
+seaborn 
+xgboost
+joblib
+streamlit
+pydantic
+pytest
+pytest-cov
+requests
+plotly
+httpx
