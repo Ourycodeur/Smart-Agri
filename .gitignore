@@ -1,0 +1,39 @@
+# Environnement virtuel
+.venv/
+venv/
+venv*
+
+# Cache Python
+__pycache__/
+*.pyc
+*.pyos
+*.pyd
+
+# Git
+.git/
+
+# Environnement
+.env
+
+# Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Fichiers lourds inutiles dans github
+
+*.csv
+# Fichiers lourds inutiles dans github
+*.pkl
+*.json
+
+
+# Logs
+*.log
+
+# VS Code
+.vscode/
+pytest
+.coverage
+
+#mlflow
+*.db
