@@ -30,7 +30,7 @@ jobs:
 
       - name: Installation des dépendances
         run: |
-          pip install -r requirements-api.txt
+          pip install -r requirements.txt
           pip install pytest httpx
 
       - name: Lancement des tests unitaires
