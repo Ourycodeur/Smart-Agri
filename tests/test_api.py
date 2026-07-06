@@ -1,11 +1,6 @@
 ## Pour le test de notre api nous allons tester nos endpoints séparement
 from fastapi.testclient import TestClient
 from api.main import app
-from pathlib import Path
-import sys
-
-ROOT_DIR = Path(__file__).resolve().parent.parent
-sys.path.append(str(ROOT_DIR))
 
 # Definissons un client de test pour notre application FastAPI
 client = TestClient(app)
