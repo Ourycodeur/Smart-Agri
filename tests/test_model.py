@@ -1,9 +1,12 @@
 import joblib
 import pandas as pd
 import numpy as np
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-MODEL_PATH = "C:\\Users\\El. OURY BALDE\\Desktop\\P12\\api\\models\\best_random_forest.pkl"
+MODEL_PATH = (BASE_DIR / "../api/models/best_random_forest.pkl")
 
 # Testons le chargement du modèle e
 def test_model_loading():
