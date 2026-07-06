@@ -17,11 +17,14 @@ __pycache__/
 
 # Notebooks
 .ipynb_checkpoints/
+*.ipynb
 
-# Fichiers lourds inutiles dans github
+# Fichiers lourds inutiles dans git 
 
 *.csv
-
+# Fichiers lourds inutiles dans github
+*.pkl
+*.json
 
 
 # Logs
