@@ -2,9 +2,12 @@ name: Continuous Deployment
 
 on:
   workflow_run:
-    workflows: ["Continuous Integration"]
+    workflows: ["CI - Tests & Build"]
     types:
       - completed
+
+    branches : 
+      - main
 
 jobs:
 
