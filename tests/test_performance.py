@@ -1,39 +1,56 @@
 import joblib
 import pandas as pd
 import numpy as np
+import json
 from pathlib import Path
-from sklearn.metrics import r2_score, mean_absolute_error
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-MODEL_PATH = BASE_DIR / "api/models/best_random_forest.pkl"
-DATA_PATH  = BASE_DIR / "api/models/features.csv"
+BASE_DIR   = Path(__file__).resolve().parent.parent
+MODEL_PATH = BASE_DIR / "api" / "models" / "best_random_forest.pkl"
+CROPS_PATH = BASE_DIR / "api" / "models" / "crops.json"
 
 def test_model_performance():
     """
-    Vérifie que le modèle atteint un score minimum acceptable.
+    Vérifie que le modèle prédit correctement sur toutes les cultures
+    disponibles dans crops.json.
     """
     model = joblib.load(MODEL_PATH)
 
-    # Lecture des colonnes attendues depuis le CSV
-    expected_columns = pd.read_csv(DATA_PATH)["feature_name"].tolist()
+    # ✅ Lecture correcte d'un fichier JSON
+    with open(CROPS_PATH, "r") as f:
+        crops = json.load(f)
 
-    # Création d'un sample avec les bonnes colonnes
-    sample = pd.DataFrame([{
-        "area": "Albania",
-        "year": 2013,
-        "average_rain_fall_mm_per_year": 1485,
-        "avg_temp": 16.3,
-        "pesticides_tonnes": 121.0,
-        "item": "Maize"
-    }])
+    assert len(crops) > 0, "crops.json est vide"
 
-    # Vérification que les colonnes du sample matchent les colonnes attendues
-    assert list(sample.columns) == expected_columns, (
-        f"Colonnes attendues : {expected_columns}\n"
-        f"Colonnes reçues    : {list(sample.columns)}"
+    predictions = []
+
+    # Test sur chaque culture du fichier
+    for crop in crops:
+        sample = pd.DataFrame([{
+            "area": "Albania",
+            "year": 2013,
+            "average_rain_fall_mm_per_year": 1485,
+            "avg_temp": 16.3,
+            "pesticides_tonnes": 121.0,
+            "item": crop
+        }])
+
+        prediction = model.predict(sample)
+
+        # Vérifie que chaque prédiction est valide
+        assert np.isfinite(prediction[0]), (
+            f"Prédiction non finie pour la culture : {crop}"
+        )
+        assert prediction[0] > 0, (
+            f"Prédiction négative pour la culture : {crop}"
+        )
+
+        predictions.append(float(prediction[0]))
+
+    # Vérifie que les prédictions varient bien selon la culture
+    assert len(set(predictions)) > 1, (
+        "Toutes les cultures donnent la même prédiction — problème de modèle"
     )
 
-    # Vérification que la prédiction est valide
-    prediction = model.predict(sample)
-    assert np.isfinite(prediction[0])
-    assert prediction[0] > 0
+    print(f"✅ {len(crops)} cultures testées avec succès")
+    print(f"   Min : {min(predictions):,.0f} hg/ha")
+    print(f"   Max : {max(predictions):,.0f} hg/ha")
