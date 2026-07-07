@@ -50,7 +50,10 @@ def check_api_health():
         return False
 
 if not check_api_health():
-    st.error("⚠️ L'API FastAPI est inaccessible. Lancez-la avec `uvicorn api.main:app --reload`")
+    st.error(
+        f"⚠️ L'API est inaccessible à l'adresse : `{API_URL}`\n\n"
+        "Vérifiez que le service Railway est bien démarré."
+    )
     st.stop()
 
 # =====================================
