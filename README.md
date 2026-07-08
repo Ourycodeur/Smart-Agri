@@ -250,8 +250,8 @@ Déclenchée automatiquement après le succès de la CI :
 |---|---|---|
 | API FastAPI | https://agriculture-api-production.up.railway.app | Railway |
 | Docs API | https://agriculture-api-production.up.railway.app/docs | Railway |
-| Application Streamlit | https://agri-smart.streamlit.app | Streamlit Cloud |
-| Image Docker | docker.io/oury2005/agriculture-api:latest | Docker Hub |
+| Application Streamlit | https://appapppy-luwkawtakzihpexmbrfnni.streamlit.app | Streamlit Cloud |
+| Image Docker | https://hub.docker.com/repository/docker/oury2005/agriculture-api/ | Docker Hub |
 
 ---
 
@@ -259,8 +259,8 @@ Déclenchée automatiquement après le succès de la CI :
 
 ### API
 ```
-fastapi, uvicorn, pydantic, numpy
-scikit-learn, xgboost, joblib
+fastapi, uvicorn, pydantic, numpy, pandas
+scikit-learn,  joblib
 ```
 
 ### Streamlit
