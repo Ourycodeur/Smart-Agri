@@ -60,7 +60,7 @@ Smart-Agri/
 │       └── crops.json               # Liste des cultures disponibles
 ├── src/
 │   ├── app.py  						# Interface Streamlit
-	├──streamlit_app.py 	             # Interface Streamlit
+	├──streamlit_app.py 	            # Interface Streamlit
 │   └── Dockerfile              # Image Docker du frontend
 ├── tests/
 │   ├── test_api.py             # Tests endpoints FastAPI
@@ -68,7 +68,8 @@ Smart-Agri/
 │   └── test_performance.py     # Tests performance sur toutes les cultures
 ├── Prediction/
 │   ├── yield_df.csv            # Dataset principal (FAO)
-│   ├── pesticides.csv          # Données pesticides brutes
+│   ├── pesticides.csv  		# Données pesticides brutes
+├──	├── yield.csv				# Données contenant la cible 
 │   ├── rainfall.csv            # Données pluviométrie brutes
 │   └── temp.csv                # Données température brutes
 ├── notebooks/                  # Notebooks d'exploration et modélisation
